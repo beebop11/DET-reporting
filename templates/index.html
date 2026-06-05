@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DET Reporting Dashboard</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+    <div class="app-container">
+        <header class="app-header">
+            <div class="logo-container">
+                <div class="logo-icon">DR</div>
+                <h1>DET Reporting Dashboard</h1>
+            </div>
+            <p class="subtitle">School Matrix Automation Service</p>
+        </header>
+
+        <main class="main-content">
+            <div class="glass-card upload-section">
+                <form id="uploadForm">
+                    <div class="form-group">
+                        <label for="sheet_url">Paste DET Session Summary Google Sheet URL</label>
+                        <input type="url" id="sheet_url" name="sheet_url" placeholder="https://docs.google.com/spreadsheets/d/1abc.../edit" required class="glass-input">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="workshop_type">Workshop Type</label>
+                        <select id="workshop_type" name="workshop_type" required class="glass-input">
+                            <option value="accredited">Accredited (Standard)</option>
+                            <option value="jext_neffy">Jext and Neffy</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="target_tab_name">Target Tab Name (e.g., Session 1234)</label>
+                        <input type="text" id="target_tab_name" name="target_tab_name" placeholder="Session 1234" required class="glass-input">
+                    </div>
+
+                    <div class="form-group">
+                        <label>Upload Session Attendance Matching .csv File (Optional)</label>
+                        <div class="drop-zone" id="dropZone">
+                            <div class="drop-zone-content">
+                                <svg xmlns="http://www.3000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="upload-icon"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="17 8 12 3 7 8"></polyline><line x1="12" y1="3" x2="12" y2="15"></line></svg>
+                                <p>Drag and drop your .csv file here</p>
+                                <span class="divider">or</span>
+                                <button type="button" class="btn btn-secondary" onclick="document.getElementById('csv_file').click()">Browse Files</button>
+                                <input type="file" id="csv_file" name="csv_file" accept=".csv" multiple hidden>
+                            </div>
+                            <div class="file-info hidden" id="fileInfo">
+                                <span class="file-name"></span>
+                                <button type="button" class="btn-remove" id="removeFile">&times;</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary btn-run" id="runEngineBtn">
+                        Run Zero-Touch Processing Engine
+                    </button>
+                </form>
+            </div>
+
+            <div class="glass-card log-section hidden" id="logSection">
+                <div class="log-header">
+                    <h2>Execution Log</h2>
+                    <div class="status-indicator" id="statusIndicator">
+                        <span class="pulse-dot"></span>
+                        <span class="status-text">Processing...</span>
+                    </div>
+                </div>
+                <div class="log-output" id="logOutput">
+                    <!-- Logs will be injected here -->
+                </div>
+            </div>
+        </main>
+    </div>
+    
+    <script src="/static/js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,12 @@
+venv/
+__pycache__/
+*.pyc
+.env
+credentials.json
+*.csv
+debug_dump.txt
+test_*.py
+run_*.py
+inspect_sheet.py
+investigate_*.py
+dump_cols.py
