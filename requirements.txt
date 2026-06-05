@@ -6,3 +6,4 @@ pandas==2.2.2
 google-auth==2.29.0
 pytest==8.1.1
 rapidfuzz==3.8.1
+gunicorn==22.0.0
